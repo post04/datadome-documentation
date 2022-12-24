@@ -3,5 +3,3 @@ Documentation of the datadome payload and very rough example of the math stuff i
 
 # Purpose
 This is meant to be learned from, not pasted into your project. The mouse_move event generation is literally just randomness and probably wouldn't pass on scale. I also didn't collect a lot of sample payloads, there may be some obscure things in some payloads on some browsers that just weren't on mine but all and all, datadome is pretty easy to reverse engineer anyways.
-
-P.S. the documentation for es_sigmdn is infact correct, however, the implementation in golang is not becuase I didn't feel like using big.Float instead of float64.
