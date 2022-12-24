@@ -15,7 +15,7 @@ import (
 var (
 	previousCookie = "7DEy26LL0H1YI~zeG~3qaBRSJE3j0desD-kfTbGks28~FrsN1XOhy6D_REDACTEDNnv_S-EfF-"
 	siteKey        = "288922D4BE1987530B4E5D4A17952C"
-	step           = 0
+	step           = 1
 )
 
 func main() {
@@ -126,8 +126,6 @@ func (e *events) PopulateEvents() {
 				}
 			}
 			sig, mu, dist, startAngle, endAngle := getValues(mouseMovements[i/1000:])
-			// sigmas is broken, don't wanna fix it, feel free to do it yourself
-			// the issue is really only that float64 doesn't give us enough decimal places of percision, big.float would probably work
 			sigmas = append(sigmas, sig)
 			mumdn = append(mumdn, mu)
 			dists = append(dists, dist)
@@ -170,7 +168,7 @@ func getValues(movements []*mouseMove) (float64, float64, float64, float64, floa
 	}
 	E := movements[D]
 	F := movements[q-D-1]
-	return math.Sqrt((float64(q)*y-x*x)/float64(q)*(float64(q)-1)) / 1000.0, x / float64(q), math.Sqrt(differenceX*differenceX + differenceY*differenceY), calculateAngle(B.X, B.Y, E.X, E.Y), calculateAngle(C.X, C.Y, F.X, F.Y)
+	return math.Sqrt((float64(q)*y-x*x)/float64(q)*(float64(q)-1)) / 10000000.0, x / float64(q), math.Sqrt(differenceX*differenceX + differenceY*differenceY), calculateAngle(B.X, B.Y, E.X, E.Y), calculateAngle(C.X, C.Y, F.X, F.Y)
 }
 
 func calculateAngle(x1, y1, x2, y2 float64) float64 {
